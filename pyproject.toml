@@ -1,28 +1,35 @@
-[tool.poetry]
+[project]
+authors = [
+    { name = "Toby Devlin", email = "toby@tobydevlin.com" },
+]
+requires-python = ">=3.8,<4.0"
 name = "data-processing"
 version = "0.1.0"
 description = ""
-authors = ["Toby Devlin <toby@tobydevlin.com>"]
-readme = "README.md"
+readme = "readme.md"
 
-[tool.poetry.dependencies]
-python = "^3.8"
-pandas = "^1.5.3"
-polars = "^0.16.2"
-pyarrow = "^11.0.0"
+dependencies = [
+    "pandas>=1.5.3",
+    "polars>=0.16.2",
+]
 
+[project.optional-dependencies]
+ci = [
+    "data_processing",
+    "pytest-benchmark>=4.0.0",
+    "pytest>=7.2.1"
+]
+dev = [
+    "data_processing[ci]",
+    "matplotlib>=3.7.0",
+    "jupyter>=1.0.0",
+    "ipython-memory-magics>=0.3.7",
+    "black>=23.1.0",
+    "pre-commit>=3.1.0",
+]
 
-[tool.poetry.group.dev.dependencies]
-matplotlib = "^3.6.3"
-jupyter = "^1.0.0"
-ipython-memory-magics = "^0.3.7"
-black = "^23.1.0"
-pre-commit = "^3.0.4"
+[project.urls]
 
-
-[tool.poetry.group.ci.dependencies]
-pytest-benchmark = "^4.0.0"
-pytest = "^7.2.1"
 
 [tool.black]
 line-length = 120
@@ -32,7 +39,12 @@ addopts = "-ra -v"
 testpaths = ["test"]
 pythonpath = ["src"]
 
+[tool.pdm.build]
+includes = []
+
+[tool.pdm.scripts]
+test = "python -m data_processing"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"

@@ -51,7 +51,7 @@ jobs:
 
       # https://github.com/actions/setup-python/issues/350
       - name: Run tests
-        run: pytest  #--benchmark-autosave --benchmark-save-data --benchmark-cprofile=tottime
+        run: python -m data_processing
 
       - name: Archive performance coverage results
         uses: actions/upload-artifact@v3

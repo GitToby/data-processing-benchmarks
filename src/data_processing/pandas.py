@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from data_processing_benchmarks.const import crime_path, reddit_path
+from data_processing.const import crime_path, reddit_path
 
 
 def do_pandas_test():

@@ -2,16 +2,16 @@ from datetime import datetime
 
 import polars as pl
 
-from data_processing_benchmarks.const import crime_path, reddit_path
+from data_processing.const import crime_path, reddit_path
 
 
 def do_polars_test():
     # the data:
     # 1. Read in `Crime_Data_from_2020_to_Present.csv` to a frame, converting all datetime to native datetime format: `Date Rptd`, `DATE OCC`
-    df_crime = pl.scan_csv(crime_path, parse_dates=True)
-    df_reddit = pl.scan_csv(reddit_path, parse_dates=True)
+    df_crime = pl.scan_csv(crime_path, try_parse_dates=True)
+    df_reddit = pl.scan_csv(reddit_path, try_parse_dates=True)
 
-    distinct_ids = df_crime.select([pl.col("DR_NO").unique()]).collect()
+    distinct_ids = df_crime.select([pl.col("DR_NO").unique()]).collect().to_series()
 
     q0 = (
         # 3. Read in the `reddit_account_data.csv` to a frame, converting all datetime to native datetime format: `created_utc`, `updated_on`
