@@ -8,7 +8,7 @@ from data_processing.const import out_path
 from data_processing.pandas import do_pandas_test
 from data_processing.polars import do_polars_test
 
-logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)8s - %(message)s")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)8s - %(message)s")
 
 log = logging.getLogger(__name__)
 

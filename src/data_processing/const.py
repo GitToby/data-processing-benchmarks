@@ -10,5 +10,5 @@ log = logging.getLogger(__name__)
 if not out_path.exists():
     out_path.mkdir(parents=True)
 
-log.info(crime_path)
-log.info(reddit_path)
+log.info(f"crime_path: {crime_path}")
+log.info(f"reddit_path: {reddit_path}")
