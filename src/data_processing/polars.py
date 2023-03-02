@@ -27,7 +27,6 @@ def do_polars_test():
             ]
         )
     )
-    print(q0.collect())
 
     q1 = (
         df_crime
