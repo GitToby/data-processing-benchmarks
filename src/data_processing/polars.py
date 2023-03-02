@@ -1,12 +1,16 @@
+import logging
 from datetime import datetime
 
 import polars as pl
 
 from data_processing.const import crime_path, reddit_path
 
+log = logging.getLogger(__name__)
+
 
 def do_polars_test():
-    # the data:
+    log.info(f"using file crime_path: {crime_path}")
+    log.info(f"using file reddit_path: {reddit_path}")
     # 1. Read in `Crime_Data_from_2020_to_Present.csv` to a frame, converting all datetime to native datetime format: `Date Rptd`, `DATE OCC`
     df_crime = pl.scan_csv(crime_path, try_parse_dates=True)
     df_reddit = pl.scan_csv(reddit_path, try_parse_dates=True)

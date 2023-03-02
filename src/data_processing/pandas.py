@@ -1,10 +1,15 @@
+import logging
+
 import numpy as np
 import pandas as pd
 
 from data_processing.const import crime_path, reddit_path
 
+log = logging.getLogger(__name__)
+
 
 def do_pandas_test():
+
     # Pandas
     # 1. Read in `Crime_Data_from_2020_to_Present.csv` to a frame, converting all datetime to native datetime format: `Date Rptd`, `DATE OCC`
     df_crime = pd.read_csv(
