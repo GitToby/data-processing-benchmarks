@@ -24,6 +24,9 @@ jobs:
           path: data
           key: ${{ steps.cache_key.outputs.cache_key }}
 
+      - name: Make data dir
+        run: mkdir data -v
+
       - name: Fetch Data File Crime_Data_from_2020_to_Present.csv
         if: steps.cache-data.outputs.cache-hit != 'true'
         run: curl https://data.lacity.org/api/views/2nrs-mtv8/rows.csv?accessType=DOWNLOAD -o data/Crime_Data_from_2020_to_Present.csv
