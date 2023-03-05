@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(level
 log = logging.getLogger(__name__)
 
 
-def do_test(func: Callable):
+def _do_test(func: Callable):
     n = 5
     run_times = dict()
     log.info(f"start {func.__name__}")
@@ -28,5 +28,9 @@ def do_test(func: Callable):
         json.dump(run_times, f)
 
 
-do_test(do_polars_test)
-do_test(do_pandas_test)
+def do_test():
+    _do_test(do_polars_test)
+    _do_test(do_pandas_test)
+
+
+do_test()

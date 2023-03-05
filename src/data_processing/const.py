@@ -1,4 +1,3 @@
-import logging
 from pathlib import Path
 
 _data_root = Path(__file__).parent.parent.parent / "data"
