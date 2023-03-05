@@ -58,6 +58,8 @@ jobs:
           fail-on-cache-miss: true
           key: ${{ needs.dl_data.outputs.cache_key }}
 
+      - run: ls -laR .
+
       - name: Check cache hit
         if: steps.cache.outputs.cache-hit != 'true'
         run: exit 1
