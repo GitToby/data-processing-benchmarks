@@ -51,20 +51,14 @@ jobs:
         python-version: [ "pypy3.8", "3.8", "pypy3.9", "3.9", "3.10", "3.11" ]
 
     steps:
+      - uses: actions/checkout@v3
+
       - uses: actions/cache/restore@v3
         id: cache
         with:
           path: ${{ github.workspace }}/data
           fail-on-cache-miss: true
           key: ${{ needs.dl_data.outputs.cache_key }}
-
-      - run: ls -laR .
-
-      - name: Check cache hit
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: exit 1
-
-      - uses: actions/checkout@v3
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
