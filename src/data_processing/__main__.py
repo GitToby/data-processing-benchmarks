@@ -5,8 +5,8 @@ from datetime import datetime
 from typing import Callable
 
 from data_processing.const import out_path
-from data_processing.pandas import do_pandas_test
-from data_processing.polars import do_polars_test
+from data_processing.pandas_test import do_pandas_test
+from data_processing.polars_test import do_polars_test
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)8s - %(message)s")
 
@@ -33,4 +33,4 @@ def do_test():
     _do_test(do_pandas_test)
 
 
-do_test()
+# do_test()

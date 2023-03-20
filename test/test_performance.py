@@ -1,5 +1,5 @@
-from data_processing.pandas import do_pandas_test
-from data_processing.polars import do_polars_test
+from data_processing.pandas_test import do_pandas_test
+from data_processing.polars_test import do_polars_test
 
 
 def test_pandas():
